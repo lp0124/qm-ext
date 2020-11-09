@@ -5,7 +5,11 @@ const thirdAppidConf = require('../config/thirdAppid');
 const dispatchJson = require('../helpers/dispatchJson')
 
 !(async () => {
-  const { env, appid } = argv
+  let [env, appid] = argv._
+  if(!appid) {
+    appid = env
+    env = 'dev'
+  }
 
   if(!appid) {
     throw new Error('appid can no empty')

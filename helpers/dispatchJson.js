@@ -3,7 +3,7 @@ const fs = require('fs-extra')
 
 async function dispatchJson(fileName, hooks) {
   const oldPath = path.join(process.cwd(), fileName)
-  const tplPath = path.join(path.resolve(), '_' + fileName)
+  const tplPath = path.join(__dirname, `../_${fileName}`)
 
   let cont = fs.readJsonSync(
     await fs.pathExistsSync(oldPath) ? oldPath : tplPath
